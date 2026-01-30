@@ -1,0 +1,14 @@
+from django.urls import path
+
+from home import views
+
+urlpatterns = [
+    path("", views.index, name="index"),
+    path("notes_detail/", views.notes_detail, name="notes_detail"),
+    path("edit_note/<int:id>/", views.edit_note, name="edit_note"),
+    path("opened_note/<int:pk>/", views.open_note, name="open_note"),
+    path("move_to_trash/<int:id>/", views.move_to_trash, name="move_to_trash"),
+    path("return_note/<int:pk>/", views.return_note, name="return_note"),
+    path("trash_notes/", views.trash_notes, name="trash_notes"),
+    path("delete_note/<int:id>/", views.delete_note, name="delete_note"),
+]

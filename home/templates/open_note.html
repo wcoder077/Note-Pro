@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="content">
+	<div class="card-header" style="border-bottom: 2px solid #eee; padding-bottom: 15px; margin-bottom: 20px;">
+		<h2 style="margin: 0; justify-content: flex-start;"><i class="fa-solid fa-book-open" style="margin-right: 10px;"></i>{{ open_note.title }}</h2>
+	</div>
+
+	<div style="display: flex; justify-content: space-between; color: #666; font-size: 0.9rem; margin-bottom: 20px;">
+		<span class="note-time"><i class="fa-regular fa-clock"></i> {{ open_note.created_at|date:"d M Y H:i" }}</span>
+	</div>
+
+	<div class="note-body" style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 30px;">
+		<p>{{ open_note.content|linebreaks }}</p>
+	</div>
+
+	<div class="card-footer" style="justify-content: flex-start;">
+		<a href="{% url 'notes_detail' %}" class="btn view"
+			style="width: auto; padding: 0 20px; border-radius: 10px; gap: 8px;">
+			<i class="fa-solid fa-arrow-left"></i> Orqaga
+		</a>
+	</div>
+</div>
+{% endblock %}

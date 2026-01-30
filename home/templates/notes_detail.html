@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="main-notes">
+	{% for note in notes %}
+	<div class="card note-card">
+		<div class="card-header">
+			<h3><i class="fa-solid fa-note-sticky"></i> {{ note.title }}</h3>
+		</div>
+
+		<p class="note-preview">
+			{{ note.content|truncatechars:100 }}
+		</p>
+
+		<span class="note-time">
+			<i class="fa-regular fa-clock"></i>
+			{{ note.created_at|date:"d M Y H:i" }}
+		</span>
+
+		<div class="card-footer">
+			<a class="btn view" href="{% url 'open_note' pk=note.id %}"><i class="fa-solid fa-eye"></i></a>
+			<a class="btn edit" href="{% url 'edit_note' note.pk %}"><i class="fa-solid fa-pen"></i></a>
+			<a class="btn delete" href="{% url 'move_to_trash' note.id %}"><i class="fa-solid fa-trash"></i></a>
+		</div>
+	</div>
+
+	{% empty %}
+	<p class="empty-text">📭 Hech qanday note yo‘q</p>
+	{% endfor %}
+</div>
+
+{% endblock %}
