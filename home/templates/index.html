@@ -5,20 +5,20 @@
 	<form method="post">
 		{% csrf_token %}
 
-		<label for="title"> <i class="fa-solid fa-heading" ></i> Sarlavha </label>
+		<label for="title"> <i class="fa-solid fa-heading"></i> Sarlavha </label>
 		<div class="input-box">
-			<input type="text" name="title" id="title" maxlength="30" placeholder="Sarlavha kiriting" required />
-			<i class="fa-solid fa-note-sticky input-icon"></i>
+			<input type="text" name="title" id="title" maxlength="30" placeholder="Sarlavha kiriting" />
+			<!-- <i class="fa-solid fa-note-sticky input-icon"></i> -->
 		</div>
-
+		<!-- <br> -->
 		<label for="content"> <i class="fa-solid fa-align-left"></i> Matn </label>
 		<div class="input-box textarea-box">
 			<textarea name="content" id="content" placeholder="Note matnini yozing..." required></textarea>
-			<i class="fa-solid fa-file-lines input-icon"></i>
+			<!-- <i class="fa-solid fa-file-lines input-icon"></i> -->
 		</div>
-
+		<!-- <br> -->
 		<button type="submit">
-			<i class="fa-solid fa-floppy-disk"></i> Saqlash
+			<i class="fa-solid fa-floppy-disk"></i>Saqlash
 		</button>
 	</form>
 </div>

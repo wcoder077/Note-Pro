@@ -1,5 +1,4 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends "base.html" %} {% block content %}
 
 <div class="main-notes">
 	{% for note in trash_notes %}
@@ -11,15 +10,13 @@
 				{{ note.created_at|date:"d M Y H:i" }}
 			</span>
 		</div>
-		<p class="note-preview">
-			{{ note.content|truncatechars:120 }}
-		</p>
+		<p class="note-preview">{{ note.content|truncatechars:120 }}</p>
 		<div class="card-footer">
 			<a title="Ko'rish" href="{% url 'open_note' pk=note.id %}" class="btn view"><i class="fa-solid fa-eye"></i></a>
 
 			<a title="Qayta tiklash" href="{% url 'return_note' pk=note.id %}" class="btn edit"><i
-					class="fa-solid fa-arrow-rotate-left fa-lg" style="color: #ffffff;"></i></a>
-			<a title="O'chirish" href="{% url 'delete_note' id=note.id %}" class="btn delete"><i
+					class="fa-solid fa-arrow-rotate-left fa-lg" style="color: #ffffff"></i></a>
+			<a title="O'chirish" href="{% url 'delete_note' pk=note.pk %}" class="btn delete"><i
 					class="fa-solid fa-trash"></i></a>
 		</div>
 	</div>

@@ -13,9 +13,13 @@
 <body>
 	<header>
 		<nav>
-			<a style="text-decoration: none;" href="{% url 'index' %}">
-				<div class="logo">NotesApp</div>
-			</a>
+			<div class="base-names">
+				<a style="text-decoration: none;" href="{% url 'index' %}">
+					<h1 class="logo">NotesApp</h1>
+				</a>
+				<hr>
+				<a title="Detect User" class="user-profile-link" href="{% url 'detect_user' %}">Your username: <i>{{ user.username }}</i></a>
+			</div>
 			<div class="right">
 
 				<a title="Create note" href="{% url 'index' %}">Create Note</a>
