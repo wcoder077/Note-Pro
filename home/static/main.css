@@ -1,29 +1,26 @@
-/* 
-  Modern Design System 
-  Font: 'Inter', sans-serif (Imported in HTML)
-*/
-
+/* =========================================
+   Modern Design System & Fonts
+   ========================================= */
 :root {
-	/* Pattern: HSL for easier manipulation */
 	--primary-h: 245;
 	--primary-s: 100%;
-	--primary-l: 60%; /* Indigo-500 equivalent */
+	--primary-l: 60%;
 
 	--primary-color: hsl(var(--primary-h), var(--primary-s), var(--primary-l));
 	--primary-hover: hsl(var(--primary-h), var(--primary-s), 50%);
 	--secondary-color: #64748b;
 
-	/* Light Theme Defaults */
 	--bg-body: #f8fafc;
 	--bg-card: #ffffff;
 	--bg-glass: rgba(255, 255, 255, 0.8);
 	--text-main: #1e293b;
 	--text-muted: #64748b;
 	--border-color: #e2e8f0;
-	--shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-	--shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+	--shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+	--shadow-md:
+		0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
 	--shadow-lg:
-		0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+		0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
 
 	--radius-md: 0.5rem;
 	--radius-lg: 0.75rem;
@@ -33,17 +30,19 @@
 }
 
 body.dark-mode {
-	/* Dark Theme Overrides */
 	--bg-body: #0f172a;
 	--bg-card: #1e293b;
 	--bg-glass: rgba(30, 41, 59, 0.8);
 	--text-main: #f8fafc;
 	--text-muted: #94a3b8;
 	--border-color: #334155;
-	--shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
-	--shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.3);
+	--shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+	--shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
 }
 
+/* =========================================
+   Global Styles
+   ========================================= */
 * {
 	margin: 0;
 	padding: 0;
@@ -68,7 +67,7 @@ body {
 }
 
 /* =========================================
-   Navbar & Header
+   Navbar
    ========================================= */
 header {
 	position: sticky;
@@ -102,13 +101,14 @@ nav {
 	background: linear-gradient(135deg, var(--primary-color), #818cf8);
 	-webkit-background-clip: text;
 	background-clip: text;
-	color: transparent; /* Fallback handled by webkit-clip */
+	color: transparent;
 	letter-spacing: -0.025em;
 }
 
-/* Fallback for logo color if gradient fails or for simple styling */
-.logo:not(:supports((-webkit-background-clip: text))) {
-	color: var(--primary-color);
+@supports not (-webkit-background-clip: text) {
+	.logo {
+		color: var(--primary-color);
+	}
 }
 
 .base-names hr {
@@ -121,7 +121,7 @@ nav {
 .user-profile-link {
 	font-size: 0.9rem;
 	color: var(--text-muted);
-	text-decoration: none;
+	text-decoration: none !important;
 	font-weight: 500;
 	transition: color 0.2s;
 }
@@ -139,28 +139,101 @@ nav {
 .right {
 	display: flex;
 	align-items: center;
-	gap: 1.5rem;
+	gap: 1rem;
 }
 
-.right a {
-	text-decoration: none;
-	color: var(--text-muted);
+/* =========================================
+   Navbar Links & Buttons
+   ========================================= */
+nav a {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0.5rem 1rem;
+	border-radius: var(--radius-md);
 	font-weight: 500;
 	font-size: 0.95rem;
-	transition: color 0.2s;
+	color: var(--text-main);
+	text-decoration: none !important;
+	transition: all 0.3s ease;
+}
+
+nav a:hover {
+	background-color: rgba(99, 102, 241, 0.12);
+	color: var(--primary-color);
+	transform: translateY(-2px);
+	box-shadow: var(--shadow-sm);
+}
+
+nav a::after {
+	content: '';
+	position: absolute;
+	left: 50%;
+	bottom: -4px;
+	width: 0;
+	height: 2px;
+	background-color: var(--primary-color);
+	transition: all 0.3s ease;
+	transform: translateX(-50%);
+	border-radius: 999px;
+}
+
+nav a:hover::after {
+	width: 70%;
+}
+
+/* Right links */
+.right a {
+	background-color: rgba(99, 102, 241, 0.08);
+	padding: 0.5rem 0.9rem;
+	border-radius: var(--radius-md);
+	color: var(--text-main);
+	font-weight: 500;
+	text-align: center;
+	text-decoration: none !important;
+	transition: all 0.3s ease;
 }
 
 .right a:hover {
+	background-color: rgba(99, 102, 241, 0.18);
 	color: var(--primary-color);
+	transform: translateY(-2px);
+	box-shadow: var(--shadow-sm);
+}
+
+/* Trash Icon */
+.TrashNotes {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: var(--radius-md);
+	transition: all 0.3s ease;
+}
+
+.TrashNotes:hover {
+	background-color: rgba(239, 68, 68, 0.12);
 }
 
 .TrashNotes i {
-	color: #ef4444; /* Red-500 */
-	transition: transform 0.2s;
+	color: #ef4444;
+	transition:
+		transform 0.2s,
+		color 0.2s;
 }
 
 .TrashNotes:hover i {
-	transform: scale(1.1);
+	transform: scale(1.2);
+	color: #dc2626;
+}
+
+/* Active Page */
+nav a.active {
+	color: var(--primary-color);
+	font-weight: 600;
+}
+nav a.active::after {
+	width: 70%;
 }
 
 /* Theme Toggle Button */
@@ -201,7 +274,6 @@ nav {
 	animation: fadeIn 0.5s ease-out;
 }
 
-/* For wider pages (like notes list) */
 .notes-wrapper .content {
 	max-width: 1200px;
 }
@@ -220,7 +292,6 @@ h2 i {
 	color: var(--primary-color);
 }
 
-/* Animation */
 @keyframes fadeIn {
 	from {
 		opacity: 0;
@@ -240,7 +311,6 @@ form {
 	flex-direction: column;
 	gap: 1.5rem;
 }
-
 label {
 	display: block;
 	font-size: 0.95rem;
@@ -248,18 +318,15 @@ label {
 	color: var(--text-main);
 	margin-bottom: 0.5rem;
 }
-
 label i {
 	color: var(--text-muted);
 	margin-right: 0.5rem;
 	width: 1rem;
 	text-align: center;
 }
-
 .input-box {
 	position: relative;
 }
-
 input[type='text'],
 input[type='password'],
 textarea {
@@ -273,25 +340,21 @@ textarea {
 	border-radius: var(--radius-md);
 	transition: var(--transition);
 }
-
 textarea {
 	min-height: 200px;
 	resize: vertical;
 }
-
 input:focus,
 textarea:focus {
 	outline: none;
 	border-color: var(--primary-color);
 	box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
 }
-
 input::placeholder,
 textarea::placeholder {
 	color: var(--text-muted);
 	opacity: 0.7;
 }
-
 button[type='submit'] {
 	display: inline-flex;
 	align-items: center;
@@ -310,21 +373,18 @@ button[type='submit'] {
 	align-self: flex-start;
 	box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.2);
 }
-
 button[type='submit']:hover {
 	background-color: var(--primary-hover);
 	transform: translateY(-2px);
 	box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.3);
 }
-
 button[type='submit']:active {
 	transform: translateY(0);
 }
 
 /* =========================================
-   Notes List & Cards (Inferred)
+   Notes Cards
    ========================================= */
-/* Assuming a structure for listing notes if it exists, roughly generic styling */
 .note-card {
 	background-color: var(--bg-card);
 	border: 1px solid var(--border-color);
@@ -333,48 +393,86 @@ button[type='submit']:active {
 	margin-bottom: 1rem;
 	transition: var(--transition);
 }
-
+.note-card p {
+	color: rgb(158, 158, 158);
+}
 .note-card:hover {
 	border-color: var(--primary-color);
 	transform: translateY(-2px);
 	box-shadow: var(--shadow-md);
 }
-
-/* =========================================
-   Utility / Misc
-   ========================================= */
-a {
-	color: var(--primary-color);
-	text-decoration: none;
+.card-footer {
+	display: flex;
+	align-items: center;
+	justify-content: right;
+}
+.card-footer a {
+	width: 40px;
+	height: 40px;
+	margin-left: 10px;
+	transition: 0.3s;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-decoration: none !important;
+	border: 1px solid;
+	border-radius: 10px;
+}
+.card-footer a:hover {
+	box-shadow: 0px 0px 7px black;
+}
+.card-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.card-header span {
+	color: rgb(174, 174, 174);
 }
 
+/* =========================================
+   Utility Links
+   ========================================= */
+a {
+	text-decoration: none !important;
+	color: var(--primary-color);
+}
 a:hover {
 	text-decoration: underline;
 }
 
-/* Mobile Responsive */
+/* =========================================
+   Mobile Responsive
+   ========================================= */
 @media (max-width: 768px) {
 	nav {
 		flex-direction: column;
 		gap: 1rem;
 		padding: 1rem;
 	}
-
 	.base-names {
 		width: 100%;
 		justify-content: space-between;
 	}
-
 	.right {
 		width: 100%;
-		justify-content: space-between; /* Spread items out on mobile */
-		overflow-x: auto; /* In case many items */
+		justify-content: space-between;
+		overflow-x: auto;
 		padding-bottom: 0.5rem;
 	}
-
+	nav a,
+	.right a {
+		padding: 0.4rem 0.7rem;
+		font-size: 0.9rem;
+	}
 	.content {
 		margin: 1.5rem auto;
 		padding: 1.5rem;
 		width: 95%;
+	}
+	.card-footer {
+		justify-content: flex-end;
+		flex-wrap: wrap;
+		gap: 0.5rem;
 	}
 }

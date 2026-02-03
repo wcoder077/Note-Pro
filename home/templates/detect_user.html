@@ -1,31 +1,71 @@
-{% extends 'base.html' %}
-
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 <div class="content">
 	<h2><i class="fa-solid fa-user-shield"></i> User Detection</h2>
 
-	<div style="text-align: center; padding: 2rem;">
+	<div style="text-align: center; padding: 2rem">
 		{% if user.is_authenticated %}
-		<div style="margin-bottom: 2rem;">
-			<i class="fa-solid fa-check-circle"
-				style="color: var(--secondary-color); font-size: 4rem; margin-bottom: 1rem;"></i>
-			<h3 style="font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--text-dark);">User Detected</h3>
-			<p style="color: var(--text-light); font-size: 1.1rem;">Welcome back, <strong>{{ user.username }}</strong>!</p>
+		<div style="margin-bottom: 2rem">
+			<i
+				class="fa-solid fa-check-circle"
+				style="
+					color: var(--secondary-color);
+					font-size: 4rem;
+					margin-bottom: 1rem;
+				"
+			></i>
+			<h3
+				style="
+					font-size: 1.5rem;
+					margin-bottom: 0.5rem;
+					color: var(--text-dark);
+				"
+			>
+				User Detected
+			</h3>
+			<p style="color: var(--text-light); font-size: 1.1rem">
+				Welcome back, <strong>{{ user.username }}</strong>!
+			</p>
 		</div>
 
 		<div
-			style="background: rgba(0,0,0,0.05); padding: 1.5rem; border-radius: 12px; display: inline-block; text-align: left;">
-			<p><strong>Status:</strong> <span style="color: var(--secondary-color);">Active</span></p>
-			<p><strong>Last Login:</strong> {{ user.last_login|date:"M d, Y H:i" }}</p>
+			style="
+				background: rgba(0, 0, 0, 0.05);
+				padding: 1.5rem;
+				border-radius: 12px;
+				display: inline-block;
+				text-align: left;
+			"
+		>
+			<p>
+				<strong>Status:</strong>
+				<span style="color: var(--secondary-color)">Active</span>
+			</p>
+			<p>
+				<strong>Last Login:</strong> {{ user.last_login|date:"M d, Y H:i" }}
+			</p>
 			<p><strong>Date Joined:</strong> {{ user.date_joined|date:"M d, Y" }}</p>
-			<a href="{% url 'login' %}">Log out</a>
+			<a href="{% url 'login' %}"
+				><i class="fa-solid fa-arrow-left" style="color: #4433ff"></i>Log out</a
+			>
 		</div>
 		{% else %}
-		<div style="margin-bottom: 2rem;">
-			<i class="fa-solid fa-triangle-exclamation"
-				style="color: var(--danger-color); font-size: 4rem; margin-bottom: 1rem;"></i>
-			<h3 style="font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--text-dark);">No User Detected</h3>
-			<p style="color: var(--text-light);">Please log in to verify your identity.</p>
+		<div style="margin-bottom: 2rem">
+			<i
+				class="fa-solid fa-triangle-exclamation"
+				style="color: var(--danger-color); font-size: 4rem; margin-bottom: 1rem"
+			></i>
+			<h3
+				style="
+					font-size: 1.5rem;
+					margin-bottom: 0.5rem;
+					color: var(--text-dark);
+				"
+			>
+				No User Detected
+			</h3>
+			<p style="color: var(--text-light)">
+				Please log in to verify your identity.
+			</p>
 		</div>
 		{% endif %}
 	</div>

@@ -18,14 +18,14 @@
 		</span>
 
 		<div class="card-footer">
-			<a class="btn view" href="{% url 'open_note' pk=note.pk %}"><i class="fa-solid fa-eye"></i></a>
-			<a class="btn edit" href="{% url 'edit_note' pk=note.pk %}"><i class="fa-solid fa-pen"></i></a>
-			<a class="btn delete" href="{% url 'move_to_trash' pk=note.pk %}"><i class="fa-solid fa-trash"></i></a>
+			<a class="btn view" href="{% url 'open_note' pk=note.pk %}"><i class="fa-solid fa-eye fa-lg"></i></a>
+			<a class="btn edit" href="{% url 'edit_note' pk=note.pk %}"><i class="fa-solid fa-pen fa-lg"></i></a>
+			<a class="btn delete" href="{% url 'move_to_trash' pk=note.pk %}"><i class="fa-solid fa-trash fa-lg"></i></a>
 		</div>
 	</div>
 
 	{% empty %}
-	<p class="empty-text">📭 Hech qanday note yo‘q</p>
+	<p class="empty-text">📭 Hech qanday qayd yo‘q</p>
 	{% endfor %}
 </div>
 

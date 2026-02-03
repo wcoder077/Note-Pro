@@ -18,13 +18,14 @@
 					<h1 class="logo">NotesApp</h1>
 				</a>
 				<hr>
-				<a title="Detect User" class="user-profile-link" href="{% url 'detect_user' %}">Your username: <i>{{ user.username }}</i></a>
+				<a title="Detect User" class="user-profile-link" href="{% url 'detect_user' %}">Username:
+					   <i style="margin-left: 10px;">{{ user.username }}</></a>
 			</div>
 			<div class="right">
 
-				<a title="Create note" href="{% url 'index' %}">Create Note</a>
-				<a title="Notes" href="{% url 'notes_detail' %}">Notes</a>
-				<a title="Trash notes" class="TrashNotes" href="{% url 'trash_notes' %}"><i
+				<a title="Create note" href="{% url 'index' %}">Qayd yaratish</a>
+				<a title="Notes" href="{% url 'notes_detail' %}">Qaydlar</a>
+				<a title="Trash notes" class="TrashNotes" style="width: 40px; height: 40px;" href="{% url 'trash_notes' %}"><i
 						class="fa-regular fa-trash-can fa-xl"></i></a>
 				<button id="theme-toggle" class="btn" title="Switch Theme">
 					<i class="fa-solid fa-moon"></i>
